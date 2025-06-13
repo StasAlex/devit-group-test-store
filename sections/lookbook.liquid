@@ -1,0 +1,130 @@
+<section class="lookbook-section"
+         style="--lookbook-section-height: {{ section.settings.section_height_desktop }}px;">
+<div class="lookbook-wrapper">
+    <div class="lookbook-image"
+         style="--lookbook-mobile-image-max-height: {{ section.settings.mobile_image_max_height }}px;">
+        {% if section.settings.bg_image != blank %}
+            <img
+                    src="{{ section.settings.bg_image | image_url: width: 1200 }}"
+                    alt="{{ section.settings.bg_image.alt | escape }}"
+                    loading="lazy"
+            >
+        {% endif %}
+    </div>
+
+
+    <div class="lookbook-content text-align-{{ section.settings.text_align }}"
+             style="--lookbook-pad-left: {{ section.settings.padding_left }}px;
+                     --lookbook-pad-right: {{ section.settings.padding_right }}px;
+                     background-color: {{ section.settings.background_color }};
+                     ">
+            <h2>{{ section.settings.heading }}</h2>
+            <p>{{ section.settings.text }}</p>
+            <button
+                    class="button lookbook-trigger text-align-{{ section.settings.text_align }}"
+                    data-modal-id="LookbookModal"
+                    aria-haspopup="dialog"
+            >
+                {{ section.settings.button_label }}
+            </button>
+        </div>
+    </div>
+</section>
+
+{% render 'lookbook-modal', products: section.settings.products %}
+
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Section image"
+    },
+    {
+      "type": "range",
+      "id": "section_height_desktop",
+      "label": "Section height on desktop (px)",
+      "min": 200,
+      "max": 1200,
+      "step": 20,
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_max_height",
+      "label": "Max image height on mobile (px)",
+      "min": 100,
+      "max": 800,
+      "step": 50,
+      "default": 400
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop the look"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Our latest collection demonstrates an elegant eccentricity – bold patterns inspired by traditional nomadic dressing, embroidered buttons, ceramic detailing and artisanal stitching contrast with stark, clean-lined silhouettes that showcase refined modernity."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop the look"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color for content block",
+      "default": "#ffffff"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Products"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment (desktop)",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Left padding (desktop, px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Right padding (desktop, px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook"
+    }
+  ]
+}
+{% endschema %}
