@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     initLookbookModal();
 });
-function initModal() {
-    console.log('Modal JS loaded');
-}
  function initLookbookModal() {
     const modal = document.getElementById('LookbookModal');
     if (!modal) return;
