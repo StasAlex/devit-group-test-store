@@ -1,0 +1,67 @@
+<dialog id="LookbookModal" class="lookbook-modal" aria-modal="true" role="dialog">
+    <div class="lookbook-modal__inner">
+        <div class="lookbook-modal__image">
+            {% if section.settings.bg_image %}
+                <img src="{{ section.settings.bg_image | image_url: width: 1000 }}" alt="Look image" loading="lazy">
+            {% endif %}
+        </div>
+
+        <div class="lookbook-modal__products">
+            {% for product in products %}
+                {% assign variant = product.variants[0] %}
+                <div class="lookbook-product" data-product-id="{{ product.id }}">
+                    {{ product.featured_image | image_url: width: 600 | image_tag: alt: product.title }}
+
+                    <div class="lookbook-product__info">
+                        <div class="lookbook-product__title-price-wrapper">
+                            <h3>{{ product.title }}</h3>
+                            <p class="lookbook-product__price">
+                                <span>{{ variant.price | money }}</span>
+                                {% if variant.compare_at_price and variant.compare_at_price > variant.price %}
+                                    <s class="compare-price">{{ variant.compare_at_price | money }}</s>
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        {% if product.description != blank %}
+                            <p class="lookbook-product__desc">{{ product.description | truncatewords: 10 }}</p>
+                        {% endif %}
+
+                        <input type="hidden" name="selected_variant_id" value="{{ variant.id }}" class="lookbook-product__variant-id">
+
+                        <div class="lookbook-product__options-button-wrapper">
+                            <div class="lookbook-product__options">
+                                {% for option in product.options_with_values %}
+                                    {% assign index = forloop.index0 %}
+                                    {% assign values = option.values %}
+
+                                    {% if values.size == 1 %}
+                                        <div class="lookbook-product__option">
+                                            <span>{{ values[0] }}</span>
+                                            <input type="hidden" class="lookbook-product__option" data-option-index="{{ index }}" value="{{ values[0] }}">
+                                        </div>
+                                    {% else %}
+                                        <div class="lookbook-product__option-wrapper">
+                                            <select class="lookbook-product__option" data-option-index="{{ index }}">
+                                                {% for value in values %}
+                                                    <option value="{{ value }}">{{ value }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <button class="button button-secondary lookbook-product__add" data-variant-id="{{ variant.id }}">Add to bag</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <button class="lookbook-modal__close" onclick="document.getElementById('LookbookModal').close()" aria-label="Close modal">
+        {% render 'icon', icon: 'close', class: 'icon icon--close' %}
+    </button>
+    <script>
+        window.lookbookProducts = {{ products | json }};
+    </script>
+</dialog>

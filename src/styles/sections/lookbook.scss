@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .lookbook-section {
   @media (min-width: 768px) {
     height: var(--lookbook-section-height, auto);
@@ -77,6 +80,8 @@
     }
 
     button {
+      font-family: "Archivo", serif;
+
       &.text-align-left {
        margin-right: auto;
       }
