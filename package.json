@@ -1,18 +1,26 @@
 {
   "name": "devit-group-test-store",
   "version": "1.0.0",
-  "description": "",
+  "description": "Shopify theme development setup with Gulp, SCSS, and modular JS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp watch",
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com-stasalex:StasAlex/devit-group-test-store.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "shopify",
+    "theme",
+    "gulp",
+    "scss",
+    "js",
+    "lookbook"
+  ],
+  "author": "Stas Alexandronets",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^5.0.1",
     "gulp-concat": "^2.6.1",
