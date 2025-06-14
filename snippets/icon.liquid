@@ -396,4 +396,9 @@
     /><path
       d="M12.91 5.362h1.083v3.274H12.91V5.362Zm-2.98 0h1.084v3.274H9.93V5.362Z"
     />
+  {% when 'close' %}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" fill="none" class="{{ class }}">
+      <path d="M2 2L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
 {%- endcase -%}
