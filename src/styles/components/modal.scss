@@ -15,6 +15,10 @@
     flex-direction: column;
     overflow: visible;
     z-index: 9999;
+
+    @media (min-width: 768px) {
+      max-height: 80%;
+    }
   }
 
   &__inner {
@@ -166,16 +170,12 @@
     top: -.5rem;
     right: -.5rem;
     padding: .3rem;
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background: white;
     cursor: pointer;
     color: black;
     border: 1px solid black;
-    @media (min-width: 768px) {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
   }
 
   &__empty {
