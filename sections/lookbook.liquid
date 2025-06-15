@@ -4,28 +4,34 @@
     <div class="lookbook-image"
          style="--lookbook-mobile-image-max-height: {{ section.settings.mobile_image_max_height }}px;">
         {% if section.settings.bg_image != blank %}
-            <img
-                    src="{{ section.settings.bg_image | image_url: width: 1200 }}"
-                    alt="{{ section.settings.bg_image.alt | escape }}"
-                    loading="lazy"
-            >
+            {{ section.settings.bg_image | image_url: width: 1200 | image_tag: alt: section.settings.bg_image.title | escape | default: 'Lookbook image'  }}
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag }}
         {% endif %}
     </div>
 
     <div class="lookbook-content text-align-{{ section.settings.text_align }}"
              style="--lookbook-pad-left: {{ section.settings.padding_left }}px;
                      --lookbook-pad-right: {{ section.settings.padding_right }}px;
-                     background-color: {{ section.settings.background_color }};
-                     ">
-            <h2>{{ section.settings.heading }}</h2>
-            <p>{{ section.settings.text }}</p>
-            <button
-                    class="button lookbook-trigger text-align-{{ section.settings.text_align }}"
-                    data-modal-id="LookbookModal"
-                    aria-haspopup="dialog"
-            >
+                     background-color: {{ section.settings.background_color | default: "#ffffff" }};
+                           ">
+            {% if section.settings.heading != blank %}
+              <h2>{{ section.settings.heading }}</h2>
+            {% endif %}
+
+            {% if section.settings.text != blank %}
+              <p>{{ section.settings.text }}</p>
+            {% endif %}
+
+            {% if section.settings.button_label != blank %}
+              <button
+                      class="button lookbook-trigger text-align-{{ section.settings.text_align }}"
+                      data-modal-id="LookbookModal"
+                      aria-haspopup="dialog"
+              >
                 {{ section.settings.button_label }}
-            </button>
+              </button>
+            {% endif %}
         </div>
     </div>
 </section>
