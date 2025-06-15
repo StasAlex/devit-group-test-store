@@ -92,8 +92,8 @@
       "type": "lookbook",
       "settings": {
         "bg_image": "shopify://shop_images/2025-06-13_17-56.png",
-        "section_height_desktop": 800,
-        "mobile_image_max_height": 600,
+        "section_height_desktop": 900,
+        "mobile_image_max_height": 400,
         "heading": "Shop the look",
         "text": "Our latest collection demonstrates an elegant eccentricity – bold patterns inspired by traditional nomadic dressing, embroidered buttons, ceramic detailing and artisanal stitching contrast with stark, clean-lined silhouettes that showcase refined modernity.",
         "button_label": "Shop the look",
