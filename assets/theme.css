@@ -202,7 +202,12 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: top;
+  object-position: center -100px;
+}
+@media (min-width: 480px) {
+  .lookbook-section .lookbook-image img {
+    object-position: center -150px;
+  }
 }
 @media (max-width: 767px) {
   .lookbook-section .lookbook-image img {
@@ -471,7 +476,12 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: top;
+  object-position: center -100px;
+}
+@media (min-width: 480px) {
+  .lookbook-section .lookbook-image img {
+    object-position: center -150px;
+  }
 }
 @media (max-width: 767px) {
   .lookbook-section .lookbook-image img {
