@@ -22,7 +22,7 @@ npm install
 npm run dev
 ```
 
-Для продакшен-збірки:
+Для продакшн-збірки:
 ```bash
 npm run build
 ```
